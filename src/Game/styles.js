@@ -10,32 +10,8 @@ export default {
   ul: {
     paddingLeft: '30px',
   },
-  boardRow: {
-    '&:after': {
-      clear: 'both',
-      content: '',
-      display: 'table',
-    },
-  },
   status: {
     marginBottom: '10px',
-  },
-  square: {
-    background: '#fff',
-    border: '1px solid #999',
-    float: 'left',
-    fontSize: '24px',
-    fontWeight: 'bold',
-    lineHeight: '34px',
-    height: '34px',
-    marginRight: '-1px',
-    marginTop: '-1px',
-    padding: 0,
-    textAlign: 'center',
-    width: '34px',
-    '&:focus': {
-      outline: 'none',
-    },
   },
   kbdNavigation: {
     background: '#ddd',
