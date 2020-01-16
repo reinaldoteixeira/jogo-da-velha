@@ -22,7 +22,7 @@ Square.propTypes = {
 };
 
 Square.defaultProps = {
-  value: ''
+  value: '',
 };
 
 export default Square;

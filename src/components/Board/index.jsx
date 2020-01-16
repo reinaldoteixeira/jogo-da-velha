@@ -5,13 +5,13 @@ import Square from '../Square';
 
 const Board = (props) => {
   const { squares, onClick } = props;
-  
-  const renderSquare = (i) => {
-    return <Square
+
+  const renderSquare = (i) => (
+    <Square
       value={squares[i]}
       onClick={() => onClick(i)}
-    />;
-  }
+    />
+  );
 
   return (
     <div>

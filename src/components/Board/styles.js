@@ -1,9 +1,9 @@
 export default {
-    boardRow: {
-      '&:after': {
-        clear: 'both',
-        content: '',
-        display: 'table',
-      },
-    }
+  boardRow: {
+    '&:after': {
+      clear: 'both',
+      content: '',
+      display: 'table',
+    },
+  },
 };

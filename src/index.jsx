@@ -2,8 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Game from './Game';
 
-  // ========================================
-  ReactDOM.render(
-    <Game />,
-    document.getElementById('root')
-  );
+// ========================================
+ReactDOM.render(
+  <Game />,
+  // eslint-disable-next-line no-undef
+  document.getElementById('root'),
+);

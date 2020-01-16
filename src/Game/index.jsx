@@ -2,12 +2,16 @@ import React, { useState } from 'react';
 import Board from '../components/Board';
 import styles from './styles';
 
-export default () => {
+import { requester } from '../services';
+
+const Game = () => {
   const [history, setHistory] = useState([{
     squares: Array(9).fill(null),
   }]);
   const [xIsNext, setXIsNext] = useState(true);
   const [stepNumber, setStepNumber] = useState(0);
+
+  requester.get('/');
 
   const calculateWinner = (squares) => {
     const lines = [
@@ -27,9 +31,9 @@ export default () => {
       }
     }
     return null;
-  }
+  };
 
- const handleClick = (i) => {
+  const handleClick = (i) => {
     const subHistory = history.slice(0, stepNumber + 1);
     const current = subHistory[subHistory.length - 1];
     const squares = current.squares.slice();
@@ -43,14 +47,14 @@ export default () => {
     }]));
     setStepNumber(history.length);
     setXIsNext(!xIsNext);
-  }
+  };
 
   const jumpTo = (step) => {
     setStepNumber(step);
     setXIsNext((step % 2) === 0);
-  }
+  };
 
-  
+
   const current = history[stepNumber];
   const winner = calculateWinner(current.squares);
 
@@ -86,4 +90,6 @@ export default () => {
       </div>
     </div>
   );
-}
+};
+
+export default Game;
