@@ -1,8 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Board from '../components/Board';
 import styles from './styles';
 
-import { requester } from '../services';
+import { requesterService } from '../services';
+
+const calculateWinner = async () => {
+  try {
+    const result = await requesterService.post('/');
+    return result.data;
+  } catch (err) {
+    console.log(err);
+    return err;
+  }
+};
 
 const Game = () => {
   const [history, setHistory] = useState([{
@@ -11,27 +21,9 @@ const Game = () => {
   const [xIsNext, setXIsNext] = useState(true);
   const [stepNumber, setStepNumber] = useState(0);
 
-  requester.get('/');
-
-  const calculateWinner = (squares) => {
-    const lines = [
-      [0, 1, 2],
-      [3, 4, 5],
-      [6, 7, 8],
-      [0, 3, 6],
-      [1, 4, 7],
-      [2, 5, 8],
-      [0, 4, 8],
-      [2, 4, 6],
-    ];
-    for (let i = 0; i < lines.length; i++) {
-      const [a, b, c] = lines[i];
-      if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-        return squares[a];
-      }
-    }
-    return null;
-  };
+  useEffect(() => {
+    calculateWinner();
+  }, []);
 
   const handleClick = (i) => {
     const subHistory = history.slice(0, stepNumber + 1);
