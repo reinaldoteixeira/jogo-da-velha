@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Game from './Game';
+import { BrowserRouter as Router } from 'react-router-dom';
+import App from './App';
 
-// ========================================
 ReactDOM.render(
-  <Game />,
+  <Router>
+    <App />
+  </Router>,
   // eslint-disable-next-line no-undef
   document.getElementById('root'),
 );
