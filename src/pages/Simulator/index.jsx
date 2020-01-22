@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import Game from '../Game';
+import Game from '../../components/Game';
 import { requesterService } from '../../services';
 
-const Simulator = () => {
-  const { simulation, setSimulation } = useState(null);
+const PageSimulator = () => {
+  const [simulation, setSimulation] = useState();
 
   const getSimulator = async () => {
     try {
-      return await requesterService.post('/');
+      const response = await requesterService.get('/');
+      setSimulation(response);
     } catch (err) {
       console.log(err);
     }
   };
 
   useEffect(() => {
-    setSimulation(getSimulator());
+    getSimulator();
   }, []);
 
   return (
@@ -22,4 +23,4 @@ const Simulator = () => {
   );
 };
 
-export default Simulator;
+export default PageSimulator;
